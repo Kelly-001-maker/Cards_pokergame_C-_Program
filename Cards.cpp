@@ -1,13 +1,19 @@
 #include <iostream>
 #include <cstdlib>
 using namespace std;
-class Cards
-{
-	
-};
 
 int main()
 {
+	cout<<"THREE HANDS POKER GAME"<<endl;
+	cout<<"PLEASE TAKE TIME TO READ THE RULES OF THE GAME"<<endl;
+	cout<<"Take note that letters c,d,h,s represents the card suits i.e club, diamond, hearts and spade respectively"<<endl;
+	cout<<"The card values are represented by A for Ace, numbers 2 upto 10 for values of cards value 2 to 10 and J for jack, K for King and Q for Queen"<<endl;
+	cout<<"1. At any time every player should be having three cards"<<endl;
+	cout<<"2. A player wins with three cards if at all all the three cards are of the same value"<<endl;
+	cout<<"3. If the above condition is not satisfied, at any time a player should win with four cards"<<endl;
+	cout<<"4. A player wins if the four cards are consecutive"<<endl;
+	cout<<"5. A player wins if he has two cards of the same value and the other two are of the same Value"<<endl;
+	
 	//1.we havecreate the deck of cards
 	
 	// 2.We need to populate our deck with cards
@@ -26,13 +32,28 @@ int main()
 	//The folowing for loop generates two random numbers 52 times to exchange cards, i.e to shuffle
 	for (int i =0;i<52;i++)
 	{
-			int randnum1 = rand() % (0-51);
-			int randnum2 = rand() % (0-51);
-			const char *temp[1] = {deck_card[randnum2]};
-			deck_card[randnum1]=deck_card[randnum2];
-			deck_card[randnum2]=temp[0];
 			
-	}
+	   	int mycondition = 1;
+		while(mycondition==1)
+		{
+			//generate two random numbers
+			int random_number = rand() % (0-51);
+			int first_number = random_number;
+		    random_number = rand() % (0-51);
+			int second_number = random_number;
+			//Make sure the two random numbers are not the same
+			if(first_number != second_number)
+			{
+				mycondition=0;
+				const char *temp[1] = {deck_card[second_number]};
+			    deck_card[second_number]=deck_card[first_number];
+			    deck_card[first_number]=temp[0];
+			}
+				
+		}
+			
+			
+   	}
 	
 	//const char *deck_card_two[52]= deck_card;
 	//We asign cards to each player three cards each from index 51 to index 53
@@ -42,8 +63,8 @@ int main()
 	int condition = 45;
 	while (condition>=0)
 	{
-			cout<<"\tPLAYER ONE";
-	         cout<<"\t\t\tPLAYER TWO"<<endl;
+			cout<<"\tPLAYER ONE CARDS";
+	         cout<<"\t\t\tPLAYER TWO CARDS"<<endl;
 	         cout<<"\t 1."<<player_one[0];
 	         cout<<"\t\t\t 1."<<player_two[0]<<endl;
 	         cout<<"\t 2."<<player_one[1];
@@ -56,7 +77,7 @@ int main()
 	         cout<<"TURN FOR PLAYER ONE TO PLAY"<<endl;
 	             if(player_one[0]==player_one[1] && player_one[0]==player_one[2])
 	         {  //RULE NUMBER 1: if all the three cards are equal
-	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			 //If the game is not over player one picks a card
@@ -64,17 +85,17 @@ int main()
 	         // RULE NUMBER 2: To check if the card picked resembles any two cards the player has in his deck
 	         if(player_one_picks_card[0]==player_one[0] &&player_one_picks_card[0]==player_one[1])
 	         {
-	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_one_picks_card[0]==player_one[0] &&player_one_picks_card[0]==player_one[2])
 	         {
-	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY   OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_one_picks_card[0]==player_one[1] &&player_one_picks_card[0]==player_one[2])
 	         {
-	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER ONE WINS BY EQUALITY  OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 	         
@@ -144,17 +165,17 @@ int main()
 		    //RULE NUMBER 4:Check weather the there are to pairs which are equal, i.e two cards are the same and the other two cards are the same
 		     if(player_one[0]==player_one[1] && player_one[2]==player_one_picks_card[0])
 	         {
-	         	cout<<"GAME OVER!!! PLAYER ONE WINS BY EQUALITY OF TWO PAIRS"<<endl;
+	         	cout<<"GAME OVER!!! PLAYER ONE WINS BY EQUALITY OF VALUE OF PAIRS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_one[0]==player_one[2] && player_one[1]==player_one_picks_card[0])
 	         {
-	         	cout<<"GAME OVER!!! PLAYER ONE WINS BY EQUALITY OF TWO PAIRS"<<endl;
+	         	cout<<"GAME OVER!!! PLAYER ONE WINS BY EQUALITY OF VALUE OF PAIRS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_one[0]==player_one_picks_card[0] && player_one[1]==player_one[2])
 	         {
-	         	cout<<"GAME OVER!!! PLAYER ONE WINS BY EQUALITY OF TWO PAIRS"<<endl;
+	         	cout<<"GAME OVER!!! PLAYER ONE WINS BY EQUALITY OF VALUE OF PAIRS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			 //Now if player one haven't won, he/ she has to drop one card, and he or she should choose which ca to drop
@@ -184,7 +205,7 @@ int main()
                 cout<<" TURN FOR PLAYER TWO TO PLAY"<<endl;
 	             if(player_two[0]==player_two[1] && player_two[0]==player_two[2])
 	         {  //RULE NUMBER 1: if all the three cards are equal
-	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY  OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			 //If the game is not over player one picks a card
@@ -192,17 +213,17 @@ int main()
 	         // RULE NUMBER 2: To check if the card picked resembles any two cards the player has in his deck
 	         if(player_two_picks_card[0]==player_two[0] &&player_two_picks_card[0]==player_two[1])
 	         {
-	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY  OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_two_picks_card[0]==player_two[0] &&player_two_picks_card[0]==player_two[2])
 	         {
-	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY  OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_two_picks_card[0]==player_two[1] &&player_two_picks_card[0]==player_two[2])
 	         {
-	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY OF ALL THREE CARDS"<<endl;
+	         	cout<<"GAME OVER!! PLAYER TWO WINS BY EQUALITY OF VALUE FOR ALL THE THREE CARDS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 	         
@@ -272,17 +293,17 @@ int main()
 		    //RULE NUMBER 4:Check weather the there are to pairs which are equal, i.e two cards are the same and the other two cards are the same
 		     if(player_two[0]==player_two[1] && player_two[2]==player_two_picks_card[0])
 	         {
-	         	cout<<"GAME OVER!!! PLAYER TWO WINS BY EQUALITY OF TWO PAIRS"<<endl;
+	         	cout<<"GAME OVER!!! PLAYER TWO WINS BY EQUALITY OF VALUE OF PAIRS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_two[0]==player_two[2] && player_two[1]==player_two_picks_card[0])
 	         {
-	         	cout<<"GAME OVER!!! PLAYER TWO WINS BY EQUALITY OF TWO PAIRS"<<endl;
+	         	cout<<"GAME OVER!!! PLAYER TWO WINS BY EQUALITY OF VALUE OF PAIRS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			  if(player_two[0]==player_two_picks_card[0] && player_two[1]==player_two[2])
 	         {
-	         	cout<<"GAME OVER!!! PLAYER TWO WINS BY EQUALITY OF TWO PAIRS"<<endl;
+	         	cout<<"GAME OVER!!! PLAYER TWO WINS BY EQUALITY OF VALUE OF PAIRS"<<endl;
 	         	exit(0);//This lines terminates the program
 			 }
 			 //Now if player two haven't won, he/ she has to drop one card, and he or she should choose which ca to drop
